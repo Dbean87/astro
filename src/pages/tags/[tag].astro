@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
+import Tags from "../../components/Tags.astro";
 
 export async function getStaticPaths() {
   const allPosts = await Astro.glob("../posts/*.md");
@@ -35,7 +36,5 @@ const filteredPosts = posts.filter((post) =>
   </ul>
 
    See other tags
-  <ul>
-    { uniqueTags.map(tag=> <BlogPost url={`/tags/${tag}`} title={tag}/>)}
-  </ul>
+  <Tags tags={uniqueTags} />
 </BaseLayout>
